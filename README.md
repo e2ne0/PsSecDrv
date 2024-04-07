@@ -65,6 +65,13 @@ Just install all components.
   # if it doesn't work, use this
   makecert -r -sr LocalMachine -ss My -n "CN=$Subject"
   ```
+  if use new Windows builds didn't have makecert preinstall.
+  ```
+  $Params = @{ Subject = "CN=$Subject"
+  CertStoreLocation = 'Cert:\LocalMachine\My'
+  Type = 'CodeSigningCert' }
+  New-SelfSignedCertificate @Params
+  ```
 * Open Local Machine Certificates.  
   ```
   certlm.msc
